@@ -188,10 +188,27 @@ $(function(){
     function ViewModel() {
       var self = this;
 	  self.table = ko.observable(new TableReservation());
+	  self.CreateLinkClickEvent = function() {
+		var cardIds = [];
+		$("select.card-selector").each(function(i, e) {
+		  cardIds.push($(e).val());
+		});
+		prompt("共享链接", location.href.substring(0,location.href.length-location.hash.length)+"#"+cardIds.join(","));
+	  };
     };
     var VM = new ViewModel();
 	for(var i = 0; i < 2; i++)
 	  VM.table().sets().push(new SetReservation(data['sets']));
     ko.applyBindings(VM);
     $("select.card-selector").select2();
+	function Init() {
+	  var hash = location.hash.substring(1).split(",");
+	  var selectLength = $("select.card-selector").length;
+	  for(var i in hash) {
+		if(i >= selectLength) break;
+		$($("select.card-selector")[i]).val(hash[i]).trigger("change");
+		i++;
+	  }
+	}
+	Init();
 });
