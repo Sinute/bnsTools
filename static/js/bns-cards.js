@@ -205,8 +205,6 @@ $(function(){
 	  var hash = location.hash.substring(1).split(",");
 	  var selectLength = $("select.card-selector").length;
 	  for(var i in hash) {
-		console.log(hash[i]);
-		console.log(i);
 		if(i >= selectLength) break;
 		$($("select.card-selector")[i]).val(hash[i]).trigger("change");
 		i++;
