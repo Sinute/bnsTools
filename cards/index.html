@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>BnsCards</title>
   <script src="../static/js/jquery-2.1.0.min.js"></script>
   <link rel="stylesheet" href="../static/css/bootstrap.min.css">
   <script src="../static/js/bootstrap.min.js"></script>
@@ -10,7 +10,7 @@
   <script src="../static/js/select2.js"></script>
   <script src="../static/js/select2_locale_zh-CN.js"></script>
   <script src="../static/js/knockout-3.1.0.js"></script>
-  <script src="./data.js"></script>
+  <script src="../static/js/bns-cards-data.js"></script>
   <style>
   th:nth-child(1){ width: 350px; }
   .card-selector { width: 350px; }
@@ -63,6 +63,9 @@
 	  <!-- /ko -->
     </tbody>
   </table>
+  <button type="button" class="btn btn-default btn-block" data-bind="click: CreateLinkClickEvent">创建共享链接</button>
+  <hr>
+  <span class="pull-right">@电一 | 飞扇堂 | 兩儀未那&emsp;</span>
 <script src="../static/js/bns-cards.js"></script>
 </body>
 </html>
