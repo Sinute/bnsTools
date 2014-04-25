@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="../static/js/jquery-2.1.0.min.js"></script>
+  <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+  <script src="../static/js/bootstrap.min.js"></script>
+  <link href="../static/css/select2.css" rel="stylesheet"/>
+  <script src="../static/js/select2.js"></script>
+  <script src="../static/js/select2_locale_zh-CN.js"></script>
+  <script src="../static/js/knockout-3.1.0.js"></script>
+  <script src="./data.js"></script>
+  <style>
+  th:nth-child(1){ width: 350px; }
+  .card-selector { width: 350px; }
+  </style>
+</head>
+<body>
+  <table class="table table-bordered table-responsive table-condensed">
+    <thead>
+      <tr>
+        <th>Card</th>
+		<!-- ko foreach: table().ths() -->
+        <th data-bind="text: $data"></th>
+		<!-- /ko -->
+      </tr>
+    </thead>
+    <tbody>
+	  <!-- ko foreach: table().sets() -->
+	  <!-- ko foreach: cards() -->
+      <tr>
+        <td>
+		  <select class="card-selector" data-bind="options: options,
+		  value: selectedCardId,
+		  optionsText: 'optionsText',
+		  optionsValue: 'optionsValue',
+		  optionsCaption: 'Choose...',
+		  event: {change: $root.table().SelectorChangeEvent}"
+		  style="width: 100%;"></select>
+        </td>
+		<!-- ko foreach: tds() -->
+        <td data-bind="text: $data"></td>
+		<!-- /ko -->
+      </tr>
+	  <!-- /ko -->
+	  <!-- ko foreach: setEffects() -->
+      <tr class="active">
+        <td data-bind="text: name"></td>
+		<!-- ko foreach: tds() -->
+        <td data-bind="text: $data"></td>
+		<!-- /ko -->
+      </tr>
+	  <!-- /ko -->
+      <tr class="active">
+        <td>
+          Total
+        </td>
+		<!-- ko foreach: total().tds() -->
+        <td data-bind="css: css"><span data-bind="text: count"></span><span data-bind="text: diff"></span></td>
+		<!-- /ko -->
+      </tr>
+	  <!-- /ko -->
+    </tbody>
+  </table>
+<script src="../static/js/bns-cards.js"></script>
+</body>
+</html>
