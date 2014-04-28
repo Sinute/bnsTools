@@ -183,24 +183,48 @@ $(function(){
 			self.sets()[i].total().tds.push(td);
 		  }
 		}
-	  };
-	}
-    function ViewModel() {
-      var self = this;
-	  self.table = ko.observable(new TableReservation());
-	  self.CreateLinkClickEvent = function() {
 		var cardIds = [];
 		$("select.card-selector").each(function(i, e) {
 		  cardIds.push($(e).val());
 		});
-		prompt("共享链接", location.href.substring(0,location.href.length-location.hash.length)+"#"+cardIds.join(","));
+		location.hash = cardIds.join(",");
 	  };
+	}
+	function ProfileReservation() {
+	  var self = this;
+	  self.options = ko.observableArray();
+	  self.selectedProfile = ko.observable();
+	  for(var i = 1; i <= 5; i++)
+		self.options.push({'optionsText': '配置 '+i, 'optionsValue': i});
+	  self.SaveClickEvent = function(){
+		var date = new Date();
+		date.setTime(date.getTime()+(10*365*24*3600*1000));
+		document.cookie = "profile"+self.selectedProfile()+"="+location.hash+"; expires="+date.toGMTString();
+	  };
+	  self.LoadClickEvent = function(){
+	    var cName = "profile"+self.selectedProfile();
+	    var cStart = document.cookie.indexOf(cName+"=");
+		if(cStart == -1){
+		  location.hash = ""; 
+		}else{
+		  cStart += cName.length+1;
+		  var cEnd = document.cookie.indexOf(";",cStart);	
+		  if(cEnd == -1) cEnd = document.cookie.length;
+		  location.hash = document.cookie.substring(cStart,cEnd);
+		}
+	    Init();
+	  }
+	}
+    function ViewModel() {
+      var self = this;
+	  self.table = ko.observable(new TableReservation());
+	  self.profile = ko.observable(new ProfileReservation());
     };
     var VM = new ViewModel();
 	for(var i = 0; i < 2; i++)
 	  VM.table().sets().push(new SetReservation(data['sets']));
     ko.applyBindings(VM);
-    $("select.card-selector").select2();
+    $("select").select2();
 	function Init() {
 	  var hash = location.hash.substring(1).split(",");
 	  var selectLength = $("select.card-selector").length;

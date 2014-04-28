@@ -17,6 +17,17 @@
   </style>
 </head>
 <body>
+  <br>
+  <select class="profile-selector" data-bind="options: profile().options,
+  value: profile().selectedProfile,
+  optionsText: 'optionsText',
+  optionsValue: 'optionsValue'"
+  style="width: 100px;"></select>
+  &nbsp;
+  <button type="button" class="btn btn-default btn-sm" data-bind="click: profile().SaveClickEvent">保存</button>
+  <button type="button" class="btn btn-default btn-sm" data-bind="click: profile().LoadClickEvent">载入</button>
+  <br>
+  <br>
   <table class="table table-bordered table-responsive table-condensed">
     <thead>
       <tr>
@@ -63,7 +74,6 @@
 	  <!-- /ko -->
     </tbody>
   </table>
-  <button type="button" class="btn btn-default btn-block" data-bind="click: CreateLinkClickEvent">创建共享链接</button>
   <hr>
   <span class="pull-right">@电一 | 飞扇堂 | 兩儀未那&emsp;</span>
 <script src="../static/js/bns-cards.js"></script>
