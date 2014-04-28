@@ -226,8 +226,14 @@ $(function(){
     ko.applyBindings(VM);
     $("select").select2();
 	function Init() {
-	  var hash = location.hash.substring(1).split(",");
+	  var hash = [];
 	  var selectLength = $("select.card-selector").length;
+	  if(location.hash == "") {
+	    for(var i = 0; i < selectLength; i++) 
+		  hash.push('');
+	  }else{
+		hash = location.hash.substring(1).split(",");
+	  }
 	  for(var i in hash) {
 		if(i >= selectLength) break;
 		$($("select.card-selector")[i]).val(hash[i]).trigger("change");
