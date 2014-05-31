@@ -1,0 +1,81 @@
+body {
+	background: black;
+	color: white;
+	font-family: Consolas, "Microsoft YaHei", Monaco, 'Andale Mono', monospace;
+	font-size: xx-large;
+}
+.cmd-line div {
+	display: inline;
+}
+.cursor {
+  background: white;
+	-webkit-animation:cursor 1s infinite linear ;
+	animation:cursor 1s infinite linear;
+}
+.time {
+  width: 90px;
+}
+@-webkit-keyframes cursor {
+	0% {
+		background: black;
+	}
+	50% {
+		background: white;
+	}
+	100% {
+		background: black;
+	}
+}
+@-moz-keyframes cursor {
+	0% {
+		background: black;
+	}
+	50% {
+		background: white;
+	}
+	100% {
+		background: black;
+	}
+}
+@keyframes cursor {
+	0% {
+		background: black;
+	}
+	50% {
+		background: white;
+	}
+	100% {
+		background: black;
+	}
+}
+@-o-keyframes cursor {
+	0% {
+		background: black;
+	}
+	50% {
+		background: white;
+	}
+	100% {
+		background: black;
+	}
+}
+input:focus {
+	outline: 0px;
+}
+input {
+	width: 1px;
+	height: 1px;
+	background-color: transparent;
+	border: none;
+	margin: 0;
+	position: absolute;
+	left: -100px;
+	top: -100px;
+}
+.help {
+  text-align: center;
+}
+.author {
+  text-align: right;
+	font-size: x-large;
+}

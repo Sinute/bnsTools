@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Countdown!</title>
+	<link href="../static/css/countdown.css" rel="stylesheet"/>
+	<script src="../static/js/vue.min.js"></script>
+</head>
+<body id="countdown">
+  <input id="input" v-model="cmd" v-on="blur: focus, keydown: cmdInput" class="hide"/>
+	<div class="cmd-line" v-html="cmdLine">
+  </div>
+	<div>
+	  <div v-if="tips.length == 0" class="help">
+			<p>任意输入开始计时,&nbsp;输入前加"-"结束计时</p>
+			<p>例:&nbsp;输入"6线"开始计时,&nbsp输入"-6线"结束计时</p>
+			<p>请使用Chrome,&nbsp;Firefox,&nbsp;或IE10以上的浏览器</p>
+			<p class="author">By:&nbsp;电1&nbsp;|&nbsp;飞扇堂&nbsp;|&nbsp;兩儀未那</p>
+    </div>
+	  <div v-repeat="tips"><span class="time" v-text="time | timeFormat"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</div>  
+	</div>
+	<script src="../static/js/countdown.js"></script>
+</body>
+</html>
