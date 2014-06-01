@@ -17,7 +17,7 @@
 			<p>请使用Chrome,&nbsp;Firefox,&nbsp;或IE10以上的浏览器</p>
 			<p class="author">By:&nbsp;电1&nbsp;|&nbsp;飞扇堂&nbsp;|&nbsp;兩儀未那</p>
     </div>
-	  <div v-repeat="tips"><span class="time" v-text="time | timeFormat"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</div>  
+	  <div v-repeat="tips" v-style="color: 'rgb('+(255-Math.min(255,~~(time/1800*255)))+','+(255-Math.min(255,~~((1800-time)/1800*255)))+',0)'"><span class="time" v-text="time | timeFormat"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}</div>  
 	</div>
 	<script src="../static/js/countdown.js"></script>
 </body>
